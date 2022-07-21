@@ -1,11 +1,11 @@
 {
   "gaTrackingId": "UA-119127212-1",
   "components": {
-    "appName": "NCHC Gen3-IT",
+    "appName": "ag3 NCHC Gen3-IT",
     "index": {
       "introduction": {
-        "heading": "NCHC Gen3 (Docker) 測試平台",
-        "text": "NCHC Gen3 團隊測試平台(Docker Version)，由 Gen3 IT Team 提供團隊進行測試評估.",
+        "heading": "ag3 NCHC Gen3",
+        "text": "ag3 NCHC Gen3 test",
         "link": "/submission"
       },
       "buttons": [
@@ -90,21 +90,15 @@
           "name": "NCHC GEN3 文件"
         },
         {
-          "icon": "analysis",
-          "link": "#hostname#pgadmin4",
-          "color": "#a2a2a2",
-          "name": "PgAdmin4"
-        },
-        {
           "link": "https://gen3.org/resources/user/",
           "name": "Documentation"
         }
       ]
     },
     "login": {
-      "title": "NCHC Gen3 測試平台(Docker Version)",
+      "title": "ag3 NCHC Gen3",
       "subTitle": "Explore, Analyze, and Share Data",
-      "text": "NCHC Gen3 團隊測試平台(Docker Version)，由 Gen3 IT Team 提供團隊進行測試評估.",
+      "text": "ag3 NCHC Gen3 團隊測試平台(Docker Version)",
       "contact": "If you have any questions about access or the registration process, please contact ",
       "email": "gen3-it@narlabs.org.tw"
     },
@@ -169,9 +163,7 @@
       "enabled": true,
       "fields": [
         "project_id",
-        "file_name",
-        "file_size",
-        "object_id"
+	"race"
       ]
     },
     "dropdowns": {
