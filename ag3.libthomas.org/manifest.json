@@ -4,6 +4,7 @@
     "That's all I have to say"
   ],
   "versions": {
+    "audit-service": "quay.io/cdis/audit-service:2022.06",
     "arborist": "quay.io/cdis/arborist:2022.06",
     "aws-es-proxy": "quay.io/cdis/aws-es-proxy:v1.3.1",
     "fence": "quay.io/cdis/fence:2022.06",
@@ -12,7 +13,7 @@
     "pidgin": "quay.io/cdis/pidgin:2022.06",
     "revproxy": "quay.io/cdis/nginx:2022.06",
     "sheepdog": "quay.io/cdis/sheepdog:2022.06",
-    "portal": "quay.io/cdis/data-portal:2022.06",
+    "portal": "quay.io/cdis/data-portal:2022.04",
     "fluentd": "fluent/fluentd-kubernetes-daemonset:v1.2-debian-cloudwatch",
     "spark": "quay.io/cdis/gen3-spark:2022.06",
     "tube": "quay.io/cdis/tube:2022.06",
@@ -251,7 +252,7 @@
       }
     ],
     "config_index": "ag3_array-config",
-    "auth_filter_field": "resource_path"
+    "auth_filter_field": "auth_resource_path"
   },
   "scaling": {
     "arborist": {
