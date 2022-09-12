@@ -1,11 +1,11 @@
 {
   "gaTrackingId": "UA-119127212-1",
   "components": {
-    "appName": "ng3 NCHC Gen3-IT",
+    "appName": "生醫服務入口平台",
     "index": {
       "introduction": {
-        "heading": "ng3 NCHC Gen3",
-        "text": "ng3 NCHC Gen3 test",
+        "heading": "2生醫服務入口平台",
+        "text": "LIONS Data Framework. 整合生醫領域資料，串接各類生醫研究常用資料庫的API，提供單一入口平臺，讓研究人員可以同時查詢多種資料庫.",
         "link": "/submission"
       },
       "buttons": [
@@ -54,6 +54,12 @@
           "name": "瀏覽"
         },
         {
+          "icon": "analysis",
+          "link": "#hostname#lamp/",
+          "color": "#a2a2a2",
+          "name": "Apps"
+        },
+        {
           "icon": "query",
           "link": "/query",
           "color": "#a2a2a2",
@@ -85,22 +91,17 @@
           "name": "上傳資料"
         },
         {
-          "icon": "files",
-          "link": "https://gitlab.nchc.org.tw/gen3/gen3project",
-          "name": "NCHC GEN3 文件"
-        },
-        {
           "link": "https://gen3.org/resources/user/",
-          "name": "Documentation"
+          "name": "文件"
         }
       ]
     },
     "login": {
-      "title": "ng3 NCHC Gen3",
+      "title": "生醫服務入口平台",
       "subTitle": "Explore, Analyze, and Share Data",
-      "text": "ng3 NCHC Gen3 團隊測試平台(Docker Version)",
+      "text": "LIONS Data Framework. 整合生醫領域資料，串接各類生醫研究常用資料庫的API，提供單一入口平臺，讓研究人員可以同時查詢多種資料庫.",
       "contact": "If you have any questions about access or the registration process, please contact ",
-      "email": "gen3-it@narlabs.org.tw"
+      "email": "0203126@narlabs.org.tw"
     },
     "footerLogos": [
       {
@@ -114,8 +115,55 @@
         "alt": "Center for Translational Data Science at the University of Chicago"
       }
     ]
+  },    
+  "graphql": {
+    "boardCounts": [
+      {
+        "graphql": "_project_count",
+        "name": "Project",
+        "plural": "Projects"
+      },      {
+        "graphql": "_case_count",
+        "name": "Case",
+        "plural": "Cases"
+      },
+      {
+        "graphql": "_demographic_count",
+        "name": "Demographic",
+        "plural": "Demographic"
+      },
+      {
+        "graphql": "_diagnosis_count",
+        "name": "Diagnosis",
+        "plural": "Diagnosis"
+      },
+      {
+        "graphql": "_sample_count",
+        "name": "Sample",
+        "plural": "Samples"
+      },
+      {
+        "graphql": "_slide_image_count",
+        "name": "Slide Image",
+        "plural": "Slide Images"
+      }
+    ],
+    "chartCounts": [
+      {
+        "graphql": "_project_count",
+        "name": "Project"
+      },
+      {
+        "graphql": "_case_count",
+        "name": "Case"
+      },	  
+      {
+        "graphql": "_slide_count",
+        "name": "Slides"
+      }
+    ],
+    "projectDetails": "boardCounts"
   },  
-  
   "dataExplorerConfig": {
     "charts": {
       "project_id": {
@@ -131,41 +179,60 @@
         "title": "Cases"
       },
       "gender": {
-        "chartType": "pie",
+        "chartType": "bar",
         "title": "Gender"
       },
       "race": {
         "chartType": "bar",
         "title": "Race"
-      }
+      },
+      "disease_type": {
+        "chartType": "bar",
+        "title": "Disease type"
+      },
+      "primary_site": {
+        "chartType": "bar",
+        "title": "Primary site"
+      }	  
     },
     "filters": {
-      "tabs": [
-		{
-            "title": "Projects",
-            "fields": [
-              "project_id",
-	      "year_of_birth",
-              "gender"
-            ]
-          }, 	  
+      "tabs": [	  
         {
           "title": "Case",
           "fields":[
             "project_id",
-	    "year_of_birth",
             "gender",
             "race",
-            "ethnicity"
-          ]
-	}
+            "ethnicity",
+			"year_of_birth",
+			"year_of_death",
+			"disease_type",
+			"primary_site",
+			"data_type",
+            "data_format"
+          ]		  
+        },
+		{
+          "title": "File",
+          "fields": [
+            "data_type",
+            "data_format"
+          ]	
+        }		
       ]
     },
     "table": {
       "enabled": true,
       "fields": [
         "project_id",
-	"race"
+		"_case_id",
+        "gender",
+        "race",
+		"ethnicity",
+        "year_of_birth",
+        "year_of_death",
+		"disease_type",
+		"primary_site"
       ]
     },
     "dropdowns": {
@@ -219,54 +286,67 @@
   },
   "fileExplorerConfig": {
     "charts": {
-      "data_type": {
+      "experimental_strategy": {
         "chartType": "stackedBar",
-        "title": "File Type"
-      },
-      "data_format": {
+        "title": "Experimental Strategy"
+      },	  
+	  "sample_type": {
         "chartType": "stackedBar",
-        "title": "File Format"
-      }
+        "title": "Sample Type"
+      }  
     },
     "filters": {
       "tabs": [
         {
           "title": "File",
           "fields": [
-            "project_id",
+		    "data_category",
             "data_type",
+			"experimental_strategy",
             "data_format"
-          ]
+          ],
+          "searchFields": [
+            "file_name"
+          ]		  
+        },{
+          "title": "Case",
+          "fields": [
+			"primary_site",
+			"program_name",
+            "project_id",
+			"disease_type"			
+          ],
+          "searchFields": [
+            "_case_id"
+          ]			  
+        },{
+          "title": "Sample",
+          "fields": [			
+			"sample_type"
+          ],
+          "searchFields": [
+            "sample_id"
+          ]			  
         }
       ]
     },
     "table": {
       "enabled": true,
       "fields": [
+		"state",
         "project_id",
+		"sample_type",
+		"disease_type",
+		"primary_site",		
+        "object_id",
         "file_name",
         "file_size",
-        "object_id"
+		"data_type",
+		"data_format",
+		"md5sum"
       ]
     },
-     "buttons": [{
-          "enabled": true,
-          "type": "file-manifest",
-          "title": "Download Manifest",
-          "leftIcon": "datafile",
-          "rightIcon": "download",
-          "fileName": "file-manifest.json",
-          "dropdownId": "download"
-        },
-        {
-          "enabled": true,
-          "type": "export-files-to-workspace",
-          "title": "Export to Workspace",
-          "leftIcon": "datafile",
-          "rightIcon": "download"
-        }
-      ],
-      "dropdowns": {},	
+    "dropdowns": {},
     "guppyConfig": {
       "dataType": "file",
       "fieldMapping": [

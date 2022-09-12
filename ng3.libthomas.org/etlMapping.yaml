@@ -1,5 +1,5 @@
 mappings:
-  - name: ng3_etl
+  - name: etl
     doc_type: case
     type: aggregator
     root: case
@@ -20,6 +20,7 @@ mappings:
               - american indian or alaskan native: Indian
           - name: ethnicity
           - name: year_of_birth
+          - name: year_of_death
     aggregated_props:
       - name: _samples_count
         path: samples
@@ -61,19 +62,25 @@ mappings:
           - name: _file_id
             src: file_id
             fn: set
-  - name: ng3_file
+  - name: file
     doc_type: file
     type: collector
     root: None
     category: data_file
     props:
+      - name: project_id    
+      - name: submitter_id
       - name: object_id
+      - name: drs_id
+        src: object_id    
       - name: md5sum
       - name: file_name
       - name: file_size
       - name: data_format
       - name: data_type
       - name: state
+      - name: data_category
+      - name: source_node        
     injecting_props:
       case:
         props:
@@ -81,6 +88,25 @@ mappings:
             src: id
             fn: set
           - name: project_id
+          - name: disease_type
+          - name: primary_site         
+      sample:
+        props:
+          - name: _sample_id
+            src: id
+            fn: set
+          - name: sample_type
+            src: sample_type
+            fn: set          
+      slide:
+        props:
+          - name: percent_tumor_cells
+      slide_image:
+        props:
+          - name: data_category
+            src: object_id
+            fn: set             
+          - name: experimental_strategy         
     target_nodes:
       - name: slide_image
         path: slides.samples.cases
