@@ -48,6 +48,9 @@ mappings:
       - name: _submitted_somatic_mutations_count
         path: samples.aliquots.read_groups.submitted_somatic_mutations
         fn: count
+      - name: _slides_count
+        path: samples.slides
+        fn: count
     joining_props:
       - index: file
         join_on: _case_id
